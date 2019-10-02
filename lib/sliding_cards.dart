@@ -1,3 +1,4 @@
+import 'package:buy_tickets_design/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
@@ -56,6 +57,7 @@ class SlidingCard extends StatelessWidget {
   final String date;
   final String assetName;
   final double offset;
+  final double margin;
 
   const SlidingCard({
     Key key,
@@ -63,6 +65,7 @@ class SlidingCard extends StatelessWidget {
     @required this.date,
     @required this.assetName,
     @required this.offset,
+    this.margin
   }) : super(key: key);
 
   @override
@@ -71,7 +74,7 @@ class SlidingCard extends StatelessWidget {
     return Transform.translate(
       offset: Offset(-32 * gauss * offset.sign, 0),
       child: Card(
-        margin: EdgeInsets.only(left: 8, right: 8, bottom: 24),
+        margin: EdgeInsets.only(left: margin ?? 8, right: margin ?? 8, bottom: 24),
         elevation: 8,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
         child: Column(
@@ -137,7 +140,7 @@ class CardContent extends StatelessWidget {
               Transform.translate(
                 offset: Offset(48 * offset, 0),
                 child: RaisedButton(
-                  color: Color(0xFF162A49),
+                  color: Config.primary,
                   child: Transform.translate(
                     offset: Offset(24 * offset, 0),
                     child: Text('Reserve'),
