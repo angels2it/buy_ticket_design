@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
-import 'package:buy_tickets_design/config.dart';
+import 'package:buy_tickets_design/config_color.dart';
 import 'package:buy_tickets_design/sliding_cards.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +80,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               decoration: const BoxDecoration(
-                color: Config.primary,
+                color: ConfigColor.primary,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
               ),
               child: Stack(
@@ -228,7 +228,7 @@ class SheetHeader extends StatelessWidget {
       child: Text(
         'What\'s eat today?',
         style: TextStyle(
-          color: Colors.white,
+          color: ConfigColor.textPrimary,
           fontSize: fontSize,
           fontWeight: FontWeight.w500,
         ),

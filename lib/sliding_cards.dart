@@ -1,4 +1,4 @@
-import 'package:buy_tickets_design/config.dart';
+import 'package:buy_tickets_design/config_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
@@ -140,12 +140,12 @@ class CardContent extends StatelessWidget {
               Transform.translate(
                 offset: Offset(48 * offset, 0),
                 child: RaisedButton(
-                  color: Config.primary,
+                  color: ConfigColor.primary,
                   child: Transform.translate(
                     offset: Offset(24 * offset, 0),
                     child: Text('Reserve'),
                   ),
-                  textColor: Colors.white,
+                  textColor: ConfigColor.textPrimary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32),
                   ),
