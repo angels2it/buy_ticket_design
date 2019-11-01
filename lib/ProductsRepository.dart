@@ -3,21 +3,21 @@ import 'product.dart';
 class ProductsRepository {
   static const _allProducts = <Product>[
     Product(
-      category: Category.accessories,
+      category: Category.noodles,
       id: 0,
       isFeatured: true,
       name: 'Vagabond sack',
       price: 120,
     ),
     Product(
-      category: Category.home,
+      category: Category.vegetarian,
       id: 9,
       isFeatured: true,
       name: 'Gilt desk trio',
       price: 58,
     ),
     Product(
-      category: Category.clothing,
+      category: Category.noodles,
       id: 33,
       isFeatured: true,
       name: 'Cerise scallop tee',

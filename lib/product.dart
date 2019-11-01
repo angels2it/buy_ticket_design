@@ -2,9 +2,8 @@ import 'package:flutter/foundation.dart';
 
 enum Category {
   all,
-  accessories,
-  clothing,
-  home,
+  noodles,
+  vegetarian,
 }
 
 class Product {
@@ -13,6 +12,7 @@ class Product {
     @required this.id,
     @required this.isFeatured,
     @required this.name,
+    @required this.thumbnail,
     @required this.price,
   })  : assert(category != null),
         assert(id != null),
@@ -24,11 +24,23 @@ class Product {
   final int id;
   final bool isFeatured;
   final String name;
-  final int price;
+  final String thumbnail;
+  final double price;
 
   String get assetName => '$id-0.jpg';
   String get assetPackage => 'shrine_images';
 
   @override
   String toString() => '$name (id=$id)';
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id:  json['id'],
+      category:  Category.all,
+      isFeatured: true,
+      name: json['name'],
+      thumbnail: json['thumbnail'],
+      price: json['energyUnit'],
+    );
+  }
 }

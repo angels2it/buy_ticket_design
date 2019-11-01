@@ -1,5 +1,9 @@
 import 'dart:math' as math;
+import 'dart:math';
 import 'dart:ui';
+import 'package:buy_tickets_design/app_state.dart';
+import 'package:buy_tickets_design/product.dart';
+import 'package:provider/provider.dart';
 
 import 'package:buy_tickets_design/config_color.dart';
 import 'package:buy_tickets_design/sliding_cards.dart';
@@ -44,6 +48,7 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
   double iconLeftMargin(int index) =>
       lerp(index * (iconsHorizontalSpacing + iconStartSize), 0);
+  Future<List<Product>> products;
 
   @override
   void initState() {
@@ -186,23 +191,27 @@ class ExpandedEventItem extends StatelessWidget {
       child: AnimatedOpacity(
         opacity: isVisible ? 1 : 0,
         duration: Duration(milliseconds: 200),
-        child: SlidingCard(
-            name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
+        child: Consumer<AppState>(builder: (context, products, child) {
+          var randomItem = getRandomElement(products.items);
+          return SlidingCard(
+            name: randomItem.name,
+            price: randomItem.price,
             date: '4.20-30',
-            assetName: 'steve-johnson.jpeg',
+            thumb: randomItem.thumbnail,
             offset: 0,
             margin: 0,
-          ),
+          );
+        }),
       ),
     );
   }
-}
 
-final List<Event> events = [
-  Event('steve-johnson.jpeg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('efe-kurnaz.jpg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('rodion-kutsaev.jpeg', 'Dawan District Guangdong Hong Kong', '4.28-31'),
-];
+  T getRandomElement<T>(List<T> list) {
+    final random = new Random();
+    var i = random.nextInt(list.length);
+    return list[i];
+  }
+}
 
 class Event {
   final String assetName;

@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(fontFamily: 'SF Pro Display'),
           title: 'Buy Tickets',
           home: HomePage(),
+          debugShowCheckedModeBanner: false,
         ),
       );
   }
